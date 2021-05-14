@@ -1,8 +1,8 @@
 parameters: 
   - name: projectsolution
-    default: 'HealthCheck/Pocs.HealthCheck/Pocs.HealthCheck.csproj'
+    default: '__projectsolution__'
   - name: argumentsbuild
-    default: '/p:Configuration=Release --output=$(Agent.BuildDirectory)/Pocs.HealthCheck'
+    default: '__argumentsbuild__'
 
 steps:
 - task: DotNetCoreCLI@2

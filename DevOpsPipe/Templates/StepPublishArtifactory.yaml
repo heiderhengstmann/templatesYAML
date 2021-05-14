@@ -1,29 +1,29 @@
 steps:
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'HealthCheck/'
-    Contents: 'Pocs.HealthCheck/*.yaml'
+    SourceFolder: '__SourceFolder__'
+    Contents: '__ProjectName__/*.yaml'
     TargetFolder: '$(Agent.BuildDirectory)/'
     #CleanTargetFolder: true
     OverWrite: true
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'HealthCheck/'
-    Contents: 'Pocs.HealthCheck/Dockerfile'
+    SourceFolder: '__SourceFolder__'
+    Contents: '__ProjectName__/Dockerfile'
     TargetFolder: '$(Agent.BuildDirectory)/'
     OverWrite: true
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'HealthCheck/Pocs.HealthCheck/hdiv/'
+    SourceFolder: '__SourceFolder__/__ProjectName__/hdiv/'
     Contents: '**'
-    TargetFolder: '$(Agent.BuildDirectory)/Pocs.HealthCheck/hdiv'
+    TargetFolder: '$(Agent.BuildDirectory)/__ProjectName__/hdiv'
     OverWrite: true
-- script: 'sed -i ''s/{{TAG_VERSION}}/$(Build.BuildId)/g'' $(Agent.BuildDirectory)/Pocs.HealthCheck/**.yaml'
+- script: 'sed -i ''s/{{TAG_VERSION}}/$(Build.BuildId)/g'' $(Agent.BuildDirectory)/__ProjectName__/**.yaml'
   displayName: 'Command Line Script'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(Agent.BuildDirectory)/Pocs.HealthCheck'
-    ArtifactName: 'Pocs.HealthCheck'
+    PathtoPublish: '$(Agent.BuildDirectory)/__ProjectName__'
+    ArtifactName: '__ProjectName__'
     publishLocation: 'Container'
   condition: succeededOrFailed()

@@ -1,20 +1,20 @@
 parameters: 
   - name: ResourceGroupName
-    default: 'pocrasp-dev'
+    default: '__ResourceGroupName__'
   - name: 'azureSubscription'
-    default: 'Assinatura do Visual Studio Enterprise – MPN(a45048d3-69a8-4e2d-89a9-4585441c96f6)'
+    default: '__azureSubscription__'
   - name: backendAzureRmResourceGroupName
-    default: 'storage'
+    default: '__backendAzureRmResourceGroupName__'
   - name: backendAzureRmStorageAccountName
-    default: 'ststudyheider'
+    default: '__backendAzureRmStorageAccountName__'
   - name: backendAzureRmContainerName
-    default: 'terra'
+    default: '__backendAzureRmContainerName__'
   - name: backendAzureRmKey
-    default: 'pocrasp'
+    default: '__backendAzureRmKey__'
   - name: commandOptionsPlan
-    default: '-out dev'  
+    default: '__commandOptionsPlan__'  
   - name: commandOptionsApply
-    default: 'dev' 
+    default: '__commandOptionsApply__' 
 
 jobs:
 - deployment: release_dev
