@@ -1,0 +1,9 @@
+stages:
+- stage: AppSec
+  displayName: AppSec
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+    - template: StepBuildAppSec.yaml

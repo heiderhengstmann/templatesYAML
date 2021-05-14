@@ -1,0 +1,21 @@
+parameters: 
+  name: ''
+  argumentsbuild: ''
+  
+stages:
+- stage: BuildDev
+  displayName: Build-Dev
+  jobs:
+  - job: Build
+    variables:
+      projectsolution: ${{ parameters.projectsolution }} 
+      argumentsbuild: ${{ parameters.argumentsbuild }} 
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - template: StepBuildNetCore.yaml
+      parameters: 
+        projectsolution: $(projectsolution) 
+        argumentsbuild: $(argumentsbuild)
+    #- template: StepHDIVSecurity.yaml
+    - template: StepPublishArtifactory.yaml
